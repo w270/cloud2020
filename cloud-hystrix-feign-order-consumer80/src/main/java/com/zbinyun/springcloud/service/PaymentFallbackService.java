@@ -17,4 +17,9 @@ public class PaymentFallbackService implements HystrixPaymentService {
     public String paymentInfo_TIMEOUT(Integer id) {
         return "hystrix ----paymentInfo_TIMEOUT";
     }
+
+    @Override
+    public String paymentCircuitBreaker(Integer id) {
+        return "error";
+    }
 }

@@ -25,6 +25,14 @@
     <module>cloudalibaba-payment-provider9002</module>
     <module>cloudalibaba-nacos-order-consumer83</module>
     <module>cloudalibaba-nacos-config-client3377</module>
+    <module>cloudalibaba-sentinel-service8401</module>
+    <module>cloudalibaba-sentinel-payment-provider9003</module>
+    <module>cloudalibaba-sentinel-payment-provider9004</module>
+    <module>cloudalibaba-sentinel-order-consumer84</module>
+    <module>cloudalibaba-seata-order_service2001</module>
+    <module>cloudalibaba-seata-order-service2001</module>
+    <module>cloudalibaba-seata-account-service2003</module>
+    <module>cloudalibaba-seata-storage-service2002</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -61,7 +69,7 @@
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.2.5.RELEASE</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -70,7 +78,7 @@
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Hoxton.SR1</version>
+        <version>Hoxton.SR8</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -83,7 +91,21 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
+      <dependency>
+        <groupId>com.alibaba.csp</groupId>
+        <artifactId>sentinel-datasource-nacos</artifactId>
+        <version>1.8.0</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba.csp</groupId>
+        <artifactId>sentinel-core</artifactId>
+        <version>1.8.0</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba.csp</groupId>
+        <artifactId>sentinel-transport-simple-http</artifactId>
+        <version>1.8.0</version>
+      </dependency>
       <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>

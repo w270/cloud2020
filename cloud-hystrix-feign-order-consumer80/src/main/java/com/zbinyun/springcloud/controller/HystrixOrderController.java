@@ -25,12 +25,17 @@ public class HystrixOrderController {
     }
 
     @GetMapping("/hystrix/consumer/payment/timeout/{id}")
-    //@HystrixCommand(fallbackMethod = "paymentInfo_TIMEOUT_fallbackMethod",commandProperties = {
-    //        @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="1500")
-    //})
+//    @HystrixCommand(fallbackMethod = "paymentInfo_TIMEOUT_fallbackMethod",commandProperties = {
+//            @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="3000"),
+//
+//    },threadPoolProperties = {
+//            @HystrixProperty(name="coreSize",value="1"),
+//    })
     @HystrixCommand
-    public String paymentInfo_TIMEOUT(@PathVariable("id") Integer id){
-        return paymentService.paymentInfo_TIMEOUT(3);
+    public String paymentInfo_TIMEOUT(@PathVariable("id") Integer id) throws InterruptedException {
+        Thread.sleep(2000);
+//        return paymentService.paymentInfo_TIMEOUT(3);
+        return "1";
     }
     public String paymentInfo_TIMEOUT_fallbackMethod(@PathVariable("id")Integer id){
         return "order,timeout";
@@ -38,5 +43,11 @@ public class HystrixOrderController {
 
     public String paymentInfo_global_fallbackMethod(){
         return "global异常处理信息，请重试。";
+    }
+
+
+    @GetMapping("/circuit/payment/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id){
+        return paymentService.paymentCircuitBreaker(id);
     }
 }

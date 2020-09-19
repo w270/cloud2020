@@ -42,12 +42,13 @@ public class PaymentService {
         return "线程池："+Thread.currentThread().getName()+" paymentInfo_TIMEOUT_handler,id:"+id+"\t end 超时";
     }
     ///////================服务熔断
-    @HystrixCommand(fallbackMethod = "paymentCircuitBreaker_fallback",commandProperties = {
-            @HystrixProperty(name="circuitBreaker.enabled",value="true"),//开启断路器
-            @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"), //请求次数
-            @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),//时间窗口期
-            @HystrixProperty(name="circuitBreaker.errorThresholdPercentage",value="60"),//失败率达到多少后打开断路器
-    })
+//    @HystrixCommand(fallbackMethod = "paymentCircuitBreaker_fallback",commandProperties = {
+//            @HystrixProperty(name="circuitBreaker.enabled",value="true"),//开启断路器
+//            @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"), //请求次数
+//            @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),//时间窗口期
+//            @HystrixProperty(name="circuitBreaker.errorThresholdPercentage",value="60"),//失败率达到多少后打开断路器
+//    })
+    @HystrixCommand(fallbackMethod = "paymentCircuitBreaker_fallback")
     public String paymentCircuitBreaker(Integer id){
         if(id < 0){
             throw new RuntimeException("****************id 不能为负");
