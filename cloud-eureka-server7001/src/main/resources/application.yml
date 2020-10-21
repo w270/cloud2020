@@ -19,3 +19,6 @@ eureka:
     enable-self-preservation: false
     #扫描失效服务的间隔时间（单位毫秒，默认是60*1000）即60秒
     eviction-interval-timer-in-ms: 2000
+logging:
+  level:
+    org.springframework: debug
